@@ -9,9 +9,9 @@ import (
 	"os"
 	"strings"
 
-	"gopkg.in/gomail.v2"
+	gomail "gopkg.in/gomail.v2"
 
-	"github.com/mcuadros/ofelia/core"
+	"github.com/dima/ofelia/core"
 )
 
 // MailConfig configuration for the Mail middleware

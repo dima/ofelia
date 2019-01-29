@@ -2,9 +2,10 @@ package core
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
-	"github.com/fsouza/go-dockerclient"
+	docker "github.com/fsouza/go-dockerclient"
 	"github.com/gobs/args"
 )
 
@@ -23,6 +24,7 @@ type RunJob struct {
 	Image     string
 	Network   string
 	Container string
+	Env       string
 }
 
 func NewRunJob(c *docker.Client) *RunJob {
@@ -81,6 +83,7 @@ func (j *RunJob) buildContainer() (*docker.Container, error) {
 			Tty:          j.TTY,
 			Cmd:          args.GetArgs(j.Command),
 			User:         j.User,
+			Env:          strings.Split(j.Env, ","),
 		},
 		NetworkingConfig: &docker.NetworkingConfig{},
 	})

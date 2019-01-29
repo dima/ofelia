@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fsouza/go-dockerclient"
+	docker "github.com/fsouza/go-dockerclient"
 	"github.com/fsouza/go-dockerclient/testing"
 	. "gopkg.in/check.v1"
 )
@@ -39,6 +39,7 @@ func (s *SuiteRunJob) TestRun(c *C) {
 	job.User = "foo"
 	job.TTY = true
 	job.Delete = true
+	job.Env = "TEST_A=1,TEST_B=2"
 	job.Network = "foo"
 
 	e := NewExecution()
@@ -108,7 +109,7 @@ func (s *SuiteRunJob) buildImage(c *C) {
 
 func (s *SuiteRunJob) createNetwork(c *C) {
 	_, err := s.client.CreateNetwork(docker.CreateNetworkOptions{
-		Name: "foo",
+		Name:   "foo",
 		Driver: "bridge",
 	})
 	c.Assert(err, IsNil)

@@ -5,7 +5,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/mcuadros/ofelia/core"
+	"github.com/dima/ofelia/core"
 )
 
 // DaemonCommand daemon process

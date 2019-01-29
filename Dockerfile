@@ -2,12 +2,12 @@ ARG ARCH=amd64
 
 FROM golang:1.10.0 AS builder-amd64
 
-FROM arm32v6/golang:1.10.0 AS builder-arm32v6
+FROM arm32v6/golang:1.10.2-alpine AS builder-arm32v6
 
 FROM builder-${ARCH} AS builder
 
-WORKDIR ${GOPATH}/src/github.com/mcuadros/ofelia
-COPY . ${GOPATH}/src/github.com/mcuadros/ofelia
+WORKDIR ${GOPATH}/src/github.com/dima/ofelia
+COPY . ${GOPATH}/src/github.com/dima/ofelia
 
 ENV CGO_ENABLED 0
 ENV GOOS linux

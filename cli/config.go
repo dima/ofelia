@@ -1,13 +1,13 @@
 package cli
 
 import (
-	"github.com/fsouza/go-dockerclient"
-	"github.com/mcuadros/ofelia/core"
-	"github.com/mcuadros/ofelia/middlewares"
-	"github.com/op/go-logging"
+	defaults "github.com/mcuadros/go-defaults"
+	"github.com/dima/ofelia/core"
+	"github.com/dima/ofelia/middlewares"
+	docker "github.com/fsouza/go-dockerclient"
+	logging "github.com/op/go-logging"
 
-	"github.com/mcuadros/go-defaults"
-	"gopkg.in/gcfg.v1"
+	gcfg "gopkg.in/gcfg.v1"
 )
 
 const logFormat = "%{color}%{shortfile} ▶ %{level}%{color:reset} %{message}"
