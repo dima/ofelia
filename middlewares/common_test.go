@@ -3,7 +3,7 @@ package middlewares
 import (
 	"testing"
 
-	"github.com/dima/ofelia/core"
+	"github.com/mcuadros/ofelia/core"
 
 	. "gopkg.in/check.v1"
 )

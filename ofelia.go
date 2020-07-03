@@ -5,8 +5,7 @@ import (
 	"os"
 
 	"github.com/dima/ofelia/cli"
-
-	flags "github.com/jessevdk/go-flags"
+	"github.com/jessevdk/go-flags"
 )
 
 var version string
