@@ -2,3 +2,5 @@
 ofelia
 debug
 build
+bin
+*coverage*

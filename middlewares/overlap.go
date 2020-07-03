@@ -1,10 +1,10 @@
 package middlewares
 
-import "github.com/dima/ofelia/core"
+import "github.com/mcuadros/ofelia/core"
 
 // OverlapConfig configuration for the Overlap middleware
 type OverlapConfig struct {
-	NoOverlap bool `gcfg:"no-overlap"`
+	NoOverlap bool `gcfg:"no-overlap" mapstructure:"no-overlap"`
 }
 
 // NewOverlap returns a Overlap middleware if the given configuration is not empty

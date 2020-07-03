@@ -8,6 +8,7 @@ import (
 
 	docker "github.com/fsouza/go-dockerclient"
 	"github.com/fsouza/go-dockerclient/testing"
+	logging "github.com/op/go-logging"
 	. "gopkg.in/check.v1"
 )
 
@@ -41,8 +42,13 @@ func (s *SuiteRunJob) TestRun(c *C) {
 	job.Delete = true
 	job.Env = "TEST_A=1,TEST_B=2"
 	job.Network = "foo"
+	job.Name = "test"
 
-	e := NewExecution()
+	ctx := &Context{}
+	ctx.Execution = NewExecution()
+	logging.SetFormatter(logging.MustStringFormatter(logFormat))
+	ctx.Logger = logging.MustGetLogger("ofelia")
+	ctx.Job = job
 
 	var wg sync.WaitGroup
 	wg.Add(1)
@@ -60,7 +66,7 @@ func (s *SuiteRunJob) TestRun(c *C) {
 		wg.Done()
 	}()
 
-	err := job.Run(&Context{Execution: e})
+	err := job.Run(ctx)
 	c.Assert(err, IsNil)
 	wg.Wait()
 
